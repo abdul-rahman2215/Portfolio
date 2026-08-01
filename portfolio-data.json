@@ -1,0 +1,129 @@
+{
+  "personal": {
+    "name": "Abdul Rahman M",
+    "title": "Creative Full-Stack Developer",
+    "subtitle": "UI/UX Designer",
+    "tagline": "Crafting immersive digital experiences through clean code, modern aesthetics, and interactive technologies.",
+    "avatar": "",
+    "resumeUrl": "#",
+    "socials": {
+      "github": "https://github.com",
+      "linkedin": "https://www.linkedin.com/in/abdul-rahmanmuthafa/",
+      "twitter": "https://twitter.com",
+      "email": "itzmeabdul1114@gmail.com"
+    },
+    "location": "Coimbatore",
+    "email": "itzmeabdul1114@gmail.com"
+  },
+  "stats": [
+    { "value": "4+", "label": "Years of Experience" },
+    { "value": "25+", "label": "Projects Completed" },
+    { "value": "15+", "label": "Happy Clients" },
+    { "value": "99%", "label": "Client Satisfaction" }
+  ],
+  "about": {
+    "bioParagraphs": [
+      "I am a passionate digital craftsman specializing in bridging the gap between functional engineering and beautiful design. My goal is to build high-performance web applications that are not only robust under the hood but also provide intuitive, delightful, and memorable user experiences.",
+      "With a strong foundation in both frontend creativity and backend architecture, I thrive in environments that challenge me to solve complex technical problems while maintaining a pixel-perfect eye for detail. I believe every animation should have a purpose and every line of code should be optimized for performance."
+    ]
+  },
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        { "name": "React / Next.js", "level": 90 },
+        { "name": "JavaScript (ES6+)", "level": 95 },
+        { "name": "HTML5 / CSS3", "level": 95 },
+        { "name": "Tailwind CSS / Sass", "level": 90 },
+        { "name": "Three.js / WebGL", "level": 60 }
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        { "name": "Node.js / Express", "level": 85 },
+        { "name": "PostgreSQL / MongoDB", "level": 80 },
+        { "name": "GraphQL / REST APIs", "level": 90 },
+        { "name": "TypeScript", "level": 85 }
+      ]
+    },
+    {
+      "category": "Tools & Design",
+      "items": [
+        { "name": "Figma (UI/UX Design)", "level": 85 },
+        { "name": "Git / GitHub", "level": 90 },
+        { "name": "Docker & AWS", "level": 75 },
+        { "name": "CI/CD & Testing", "level": 80 }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Aether Analytics Dashboard",
+      "description": "A high-performance SaaS analytics suite displaying real-time data flow with interactive visual graphics and customizable user dashboards.",
+      "category": "Web App",
+      "tags": ["Next.js", "TypeScript", "Node.js", "D3.js"],
+      "image": "aether",
+      "demoUrl": "#",
+      "codeUrl": "https://github.com"
+    },
+    {
+      "title": "Luminary Headless E-Commerce",
+      "description": "A blazing fast, modular, headless commerce solution featuring swift instant page transitions, custom CMS integrations, and Stripe payment gateways.",
+      "category": "Full Stack",
+      "tags": ["React", "GraphQL", "Stripe", "Tailwind CSS"],
+      "image": "luminary",
+      "demoUrl": "#",
+      "codeUrl": "https://github.com"
+    },
+    {
+      "title": "Vortex Audio Visualizer",
+      "description": "An interactive, browser-based synthesizer with custom HTML5 canvas-rendered real-time audio visualization maps reacting to custom beats.",
+      "category": "Creative Code",
+      "tags": ["JavaScript", "Web Audio API", "HTML5 Canvas"],
+      "image": "vortex",
+      "demoUrl": "#",
+      "codeUrl": "https://github.com"
+    },
+    {
+      "title": "Zenith Productivity Orchestrator",
+      "description": "A sleek, minimalist productivity application with real-time background database synchronization, drag-and-drop workflow, and offline PWA support.",
+      "category": "Web App",
+      "tags": ["JavaScript", "Tailwind CSS", "IndexedDB", "PWA"],
+      "image": "zenith",
+      "demoUrl": "#",
+      "codeUrl": "https://github.com"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Full-Stack Engineer",
+      "company": "TechNova Solutions",
+      "period": "2024 - Present",
+      "description": "Spearheaded the redesign of the core analytics platform, migrating legacy systems to Next.js. Guided a team of 4 developers, achieving a 45% increase in site responsiveness and reducing load times by 1.2s.",
+      "tags": ["Next.js", "GraphQL", "Node.js", "AWS"]
+    },
+    {
+      "role": "Front-End Developer",
+      "company": "PixelForge Agency",
+      "period": "2022 - 2024",
+      "description": "Created bespoke, high-converting interactive marketing campaigns and user portals for startup clients. Collaborated closely with UI/UX designers to implement pixel-perfect micro-interactions.",
+      "tags": ["React", "Sass", "Figma", "GSAP"]
+    },
+    {
+      "role": "UI/UX & Web Developer",
+      "company": "Freelance",
+      "period": "2020 - 2022",
+      "description": "Delivered end-to-end design and coding services directly to startup clients worldwide. Specialized in launching responsive Shopify sites, WordPress blogs, and custom JavaScript landing pages.",
+      "tags": ["Figma", "JavaScript", "HTML/CSS", "UI/UX"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.S. in Computer Science",
+      "school": "Metro State University",
+      "period": "2016 - 2020",
+      "description": "Specialized in Software Engineering and Human-Computer Interaction. Graduated with Honors."
+    }
+  ]
+}

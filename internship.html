@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internships | Abdul Rahman</title>
+
+<style>
+
+:root{
+    --bg-primary:#0f0f1a;
+    --bg-secondary:#1a1a2e;
+    --bg-card:#16213e;
+
+    --text-primary:#ffffff;
+    --text-secondary:#b8b8d1;
+
+    --accent-primary:#7c3aed;
+    --accent-secondary:#a855f7;
+    --accent-gradient:linear-gradient(135deg,#7c3aed 0%,#ec4899 100%);
+
+    --border-color:#2d2d44;
+
+    --shadow:0 8px 32px rgba(124,58,237,.15);
+
+    --radius:18px;
+
+    --font-main:"Segoe UI",sans-serif;
+    --font-mono:"Consolas",monospace;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg-primary);
+    color:var(--text-primary);
+    font-family:var(--font-main);
+    min-height:100vh;
+}
+
+main{
+    width:min(1150px,95%);
+    margin:50px auto 80px;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:var(--text-primary);
+
+    border:1px solid var(--border-color);
+
+    background:rgba(124,58,237,.08);
+
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:var(--accent-gradient);
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
+}
+
+.page-title{
+    text-align:center;
+    margin:30px 0 50px;
+}
+
+.page-title h1{
+    font-size:clamp(3rem,6vw,4.8rem);
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.page-title p{
+    color:var(--text-secondary);
+    font-size:1.05rem;
+}
+
+.divider{
+    width:140px;
+    height:4px;
+    margin:24px auto 0;
+    border-radius:20px;
+    background:var(--accent-gradient);
+}
+
+.table-wrap{
+    margin-top:40px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border-color);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+}
+
+table{
+    width:100%;
+    min-width:850px;
+    border-collapse:collapse;
+}
+
+thead{
+    background:rgba(124,58,237,.08);
+}
+
+th{
+    padding:22px;
+
+    text-align:left;
+
+    color:var(--accent-secondary);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.78rem;
+
+    font-family:var(--font-mono);
+
+    border-bottom:1px solid var(--border-color);
+}
+
+td{
+    padding:22px;
+
+    color:var(--text-primary);
+
+    border-bottom:1px solid var(--border-color);
+}
+
+tbody tr{
+    transition:.3s ease;
+}
+
+tbody tr:hover{
+    background:rgba(124,58,237,.08);
+}
+
+tbody tr:last-child td{
+    border-bottom:none;
+}
+
+.role{
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    font-size:.75rem;
+
+    font-family:var(--font-mono);
+
+    letter-spacing:1px;
+
+    color:#fff;
+
+    background:var(--accent-gradient);
+
+    box-shadow:0 0 18px rgba(124,58,237,.25);
+}
+
+::-webkit-scrollbar{
+    height:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--accent-primary);
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--bg-secondary);
+}
+
+@media(max-width:768px){
+
+main{
+    width:95%;
+}
+
+.page-title h1{
+    font-size:2.7rem;
+}
+
+.page-title p{
+    font-size:.95rem;
+}
+
+th,
+td{
+    padding:16px;
+}
+
+.back-btn{
+    padding:10px 18px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<a href="index.html" class="back-btn">
+← Back
+</a>
+
+<div class="page-title">
+<h1>Internships</h1>
+<p>Where I've interned and what I worked on.</p>
+<div class="divider"></div>
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Year</th>
+<th>Company Name</th>
+<th>Role</th>
+<th>Duration</th>
+</tr>
+</thead>
+
+<tbody id="internship-tbody">
+
+<tr>
+<td colspan="4" style="text-align:center;color:var(--text-secondary);">
+Loading internships...
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="internship.js"></script>
+
+</body>
+</html>

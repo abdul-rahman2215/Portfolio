@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Analytics Dashboard - Project 09</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0f1a;--bg2:#1a1a2e;--card:#16213e;--card2:#1e2a45;--ink:#ffffff;--ink-s:#b8b8d1;--ink-d:#6a6a8a;--ac:#7c3aed;--ac2:#a855f7;--pink:#ec4899;--grad:linear-gradient(135deg,#7c3aed 0%,#ec4899 100%);--brd:#2d2d44;--shd:0 8px 32px rgba(124,58,237,.18);--r:16px;--mono:'JetBrains Mono',monospace;--disp:'Sora',sans-serif;--body:'Inter',sans-serif;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.glow-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(600px 500px at 5% 5%,rgba(124,58,237,.15),transparent 60%),radial-gradient(400px 300px at 90% 15%,rgba(236,72,153,.10),transparent 60%);}
+a{color:inherit;text-decoration:none;}img{max-width:100%;display:block;}
+nav{position:sticky;top:0;z-index:100;background:rgba(15,15,26,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--brd);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1200px;margin:0 auto;}
+.brand{font-family:var(--disp);font-weight:700;font-size:1rem;display:flex;align-items:center;gap:9px;}
+.brand .mark{width:28px;height:28px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#0f0f1a;font-family:var(--mono);font-weight:700;font-size:.75rem;}
+.nav-links-row{display:flex;align-items:center;gap:12px;}
+.nav-link{font-family:var(--mono);font-size:.75rem;color:var(--ink-s);border:1px solid var(--brd);padding:7px 14px;border-radius:9px;transition:.25s;}
+.nav-link:hover{color:var(--ink);border-color:var(--ac);transform:translateY(-1px);}
+.nav-link.primary{background:var(--grad);border-color:transparent;color:#fff;}
+.project-hero{padding:64px 0 0;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 28px;}
+.crumb{font-family:var(--mono);font-size:.72rem;color:var(--ink-d);display:flex;align-items:center;gap:8px;margin-bottom:24px;}
+.crumb a{color:var(--ac2);}
+.proj-num-badge{font-family:var(--mono);font-size:.7rem;color:var(--ac2);background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.2);padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:16px;}
+.project-hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,5.5vw,3.6rem);line-height:1.08;margin-bottom:16px;}
+.project-hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.subtitle{color:var(--ink-s);font-size:1.1rem;max-width:680px;margin-bottom:32px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
+.action-btn{font-family:var(--mono);font-size:.78rem;font-weight:600;padding:12px 22px;border-radius:10px;transition:.25s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;}
+.action-btn.primary{background:var(--grad);color:#fff;}
+.action-btn.secondary{border:1px solid var(--brd);color:var(--ink);background:transparent;}
+.action-btn:hover{transform:translateY(-2px);box-shadow:var(--shd);}
+.hero-visual{width:100%;background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border-radius:20px 20px 0 0;border:1px solid var(--brd);border-bottom:none;min-height:320px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-top:40px;}
+.hero-visual .big-emoji{font-size:clamp(6rem,15vw,10rem);filter:drop-shadow(0 0 60px rgba(168,85,247,.5));animation:float 4s ease-in-out infinite;position:relative;z-index:1;}
+.hero-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(124,58,237,.18),transparent 70%);}
+.mock-bar{position:absolute;top:0;left:0;right:0;height:38px;background:var(--bg2);border-bottom:1px solid var(--brd);display:flex;align-items:center;padding:0 16px;gap:8px;}
+.mock-dot{width:11px;height:11px;border-radius:50%;}
+.mock-dot.r{background:#ff5f57;}.mock-dot.y{background:#febc2e;}.mock-dot.g{background:#28c840;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+.content-wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.proj-sections{display:grid;grid-template-columns:1fr 340px;gap:40px;padding:56px 0 80px;align-items:start;}
+@media(max-width:900px){.proj-sections{grid-template-columns:1fr;}}
+.section{margin-bottom:40px;}
+.section-label{font-family:var(--mono);font-size:.7rem;color:var(--ac2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.section-label::before{content:"✦";}
+.section h2{font-family:var(--disp);font-size:1.4rem;font-weight:700;margin-bottom:16px;}
+.section p{color:var(--ink-s);margin-bottom:12px;}
+.section ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.section ul li{color:var(--ink-s);padding:12px 16px;border-radius:10px;background:var(--card);border:1px solid var(--brd);display:flex;align-items:flex-start;gap:10px;font-size:.92rem;}
+.section ul li::before{content:"→";color:var(--ac2);flex-shrink:0;}
+.sidebar>*{margin-bottom:24px;}
+.sidebar-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:22px;}
+.sidebar-card h4{font-family:var(--mono);font-size:.7rem;color:var(--ink-d);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{font-family:var(--mono);font-size:.68rem;padding:5px 12px;border-radius:8px;background:rgba(124,58,237,.12);color:var(--ac2);border:1px solid rgba(124,58,237,.2);}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--brd);}
+.info-row:last-child{border-bottom:none;}
+.info-key{font-family:var(--mono);font-size:.72rem;color:var(--ink-d);}
+.info-val{font-size:.85rem;font-weight:600;}
+.challenge-card{background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(236,72,153,.05));border:1px solid rgba(168,85,247,.2);border-radius:var(--r);padding:22px;}
+.challenge-card .ch-label{font-family:var(--mono);font-size:.7rem;color:var(--ac2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.challenge-card p{color:var(--ink-s);font-size:.9rem;}
+.side-actions{display:flex;flex-direction:column;gap:10px;}
+.side-btn{font-family:var(--mono);font-size:.78rem;font-weight:600;padding:13px;border-radius:10px;text-align:center;transition:.25s;display:block;}
+.side-btn.primary{background:var(--grad);color:#fff;}
+.side-btn.secondary{border:1px solid var(--brd);color:var(--ink);}
+.side-btn:hover{transform:translateY(-2px);box-shadow:var(--shd);}
+.page-nav{border-top:1px solid var(--brd);padding:40px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+.page-nav a{font-family:var(--mono);font-size:.8rem;color:var(--ink-s);border:1px solid var(--brd);padding:10px 18px;border-radius:10px;transition:.25s;display:flex;align-items:center;gap:8px;}
+.page-nav a:hover{border-color:var(--ac);color:var(--ink);transform:translateY(-1px);}
+.page-nav .center a{border-color:transparent;background:var(--grad);color:#fff;}
+footer{border-top:1px solid var(--brd);padding:32px 0;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-brand{font-family:var(--disp);font-weight:700;}
+.foot-fine{font-family:var(--mono);font-size:.72rem;color:var(--ink-d);}
+</style>
+</head>
+<body>
+  <div class="glow-bg"></div>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="mark">P</div> Portfolio
+      </div>
+      <div class="nav-links-row">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="mailto:contact@example.com" class="nav-link primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="project-hero">
+      <div class="hero-inner">
+        <div class="crumb">
+          <a href="../index.html">Home</a> / Projects / 09
+        </div>
+        <div class="proj-num-badge">Project 09</div>
+        <h1><span class="grad">Portfolio Analytics Dashboard</span></h1>
+        <p class="subtitle">Enterprise-grade data visualisation dashboard with custom D3.js charts and real-time RxJS streams</p>
+        
+        <div class="hero-actions">
+          <a href="#" class="action-btn primary">Live Demo</a>
+          <a href="#" class="action-btn secondary">View Source</a>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="mock-bar">
+            <div class="mock-dot r"></div>
+            <div class="mock-dot y"></div>
+            <div class="mock-dot g"></div>
+          </div>
+          <div class="big-emoji">📊</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-wrap">
+      <div class="proj-sections">
+        <div class="main-content">
+          <div class="section">
+            <div class="section-label">Overview</div>
+            <h2>About the Project</h2>
+            <p>An enterprise-grade analytics dashboard designed to monitor web traffic, user engagement, and sales metrics in real-time. This tool translates complex datasets into easily digestible visual summaries for business stakeholders.</p>
+            <p>The dashboard is built with Angular's component architecture for maximum scalability. Every chart is a standalone, reusable component that accepts typed data inputs — making it trivial to add new visualisations without touching existing code.</p>
+            <p>Data updates stream in via WebSocket simulation using RxJS observables, creating a live, breathing dashboard that reflects the latest numbers without a single page refresh.</p>
+          </div>
+          
+          <div class="section">
+            <div class="section-label">Features</div>
+            <h2>Key Capabilities</h2>
+            <ul>
+              <li>Custom interactive SVG charts built from scratch with D3.js (line, bar, donut, heatmap)</li>
+              <li>Data filtering by custom date ranges, regions, and user segments</li>
+              <li>Real-time metric updates simulated via RxJS observable streams</li>
+              <li>Exportable PDF and CSV reports with a single button click</li>
+              <li>Fully typed TypeScript codebase with strict mode enabled</li>
+              <li>Accessible keyboard-navigable chart interactions with ARIA labels</li>
+            </ul>
+          </div>
+          
+          <div class="section">
+            <div class="section-label">Responsibilities</div>
+            <h2>My Role</h2>
+            <ul>
+              <li>Architected the Angular application module structure and component library</li>
+              <li>Created all five custom D3.js chart components with full TypeScript typing</li>
+              <li>Implemented the reactive data stream architecture using RxJS observables</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="sidebar">
+          <div class="sidebar-card">
+            <h4>Tech Stack</h4>
+            <div class="tag-cloud">
+              <span class="tag">Angular 17</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">D3.js</span>
+              <span class="tag">RxJS</span>
+              <span class="tag">SCSS</span>
+            </div>
+          </div>
+          
+          <div class="challenge-card">
+            <div class="ch-label">Engineering Challenge</div>
+            <p>Using D3.js (imperative DOM manipulation) within Angular (declarative change detection) without triggering unwanted re-renders required careful architecture. I wrapped all D3 code inside ngAfterViewInit and used NgZone.runOutsideAngular() to prevent D3's internal timers from flooding Angular's change detection cycle.</p>
+          </div>
+          
+          <div class="side-actions">
+            <a href="#" class="side-btn primary">Live Preview</a>
+            <a href="#" class="side-btn secondary">GitHub Repo</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="page-nav">
+        <a href="project-08.html" class="prev">← Previous Project</a>
+        <a href="../index.html" class="center">Back to Portfolio</a>
+        <a href="project-10.html" class="next">Next Project →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="foot-brand">Portfolio.</div>
+      <div class="foot-fine">© 2026 Developer. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>

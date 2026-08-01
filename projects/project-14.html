@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player App - Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Your Name</div>
+      <ul class="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Project Header -->
+  <header class="project-header container">
+    <a href="../index.html#projects" class="back-link">← Back to Portfolio</a>
+    <h1>Custom Music Player</h1>
+    <p class="project-subtitle">Web audio player supporting playlists, shuffle, and custom audio controls.</p>
+    
+    <div class="project-links">
+      <a href="#" class="btn">View Live Demo</a>
+      <a href="#" class="btn btn-outline">View Source Code</a>
+    </div>
+  </header>
+
+  <!-- Project Content -->
+  <main class="container">
+    <img src="https://placehold.co/1200x500/e2e8f0/64748b?text=Music+Player+Screenshot" alt="Music Player Screenshot" class="hero-image">
+    
+    <div class="project-details">
+      <div class="main-content">
+        <section class="details-section">
+          <h2>Overview</h2>
+          <p>A beautifully designed, custom web audio player that steps away from the default browser audio controls. It features a neumorphic design aesthetic that looks like physical hardware.</p>
+          <p>The app allows users to load local audio files, manage custom playlists, and control playback (play, pause, next, previous, shuffle, repeat). It also features a dynamic progress bar and volume controls.</p>
+        </section>
+
+        <section class="details-section">
+          <h2>Key Features</h2>
+          <ul>
+            <li>Full playback control utilizing the HTML5 Web Audio API.</li>
+            <li>Playlist management queue.</li>
+            <li>Dynamic UI that extracts colors from the current album art.</li>
+            <li>Visual audio equalizer.</li>
+            <li>Keyboard shortcuts for accessibility (Space to play/pause, arrows for skipping).</li>
+          </ul>
+        </section>
+
+        <section class="details-section">
+          <h2>Challenges & Learnings</h2>
+          <p>Dealing with browser autoplay policies and state synchronization between the UI and the underlying HTMLAudioElement was tricky. I learned how to properly manage audio contexts, track time updates efficiently using `requestAnimationFrame`, and build accessible range sliders from scratch.</p>
+        </section>
+      </div>
+
+      <aside class="sidebar-content">
+        <section class="details-section">
+          <h2>Tech Stack</h2>
+          <div class="tech-stack-tags">
+            <span class="tech-badge">HTML5 Audio API</span>
+            <span class="tech-badge">Vanilla JS</span>
+            <span class="tech-badge">CSS Variables</span>
+            <span class="tech-badge">ColorThief.js</span>
+          </div>
+        </section>
+
+        <section class="details-section">
+          <h2>My Role</h2>
+          <ul>
+            <li>Designed the neumorphic interface.</li>
+            <li>Wrote the core audio playback and queue logic in vanilla JavaScript.</li>
+            <li>Implemented the album art color extraction feature.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>

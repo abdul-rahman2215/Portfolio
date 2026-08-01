@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Note App - Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Your Name</div>
+      <ul class="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Project Header -->
+  <header class="project-header container">
+    <a href="../index.html#projects" class="back-link">← Back to Portfolio</a>
+    <h1>Markdown Note-Taking App</h1>
+    <p class="project-subtitle">Browser-based note application with live markdown preview and cloud sync.</p>
+    
+    <div class="project-links">
+      <a href="#" class="btn">View Live Demo</a>
+      <a href="#" class="btn btn-outline">View Source Code</a>
+    </div>
+  </header>
+
+  <!-- Project Content -->
+  <main class="container">
+    <img src="https://placehold.co/1200x500/e2e8f0/64748b?text=Markdown+Notes+Screenshot" alt="Notes App Screenshot" class="hero-image">
+    
+    <div class="project-details">
+      <div class="main-content">
+        <section class="details-section">
+          <h2>Overview</h2>
+          <p>A minimalist, distraction-free writing environment built for developers and technical writers. It offers a split-pane view where users can write Markdown on the left and see the rendered HTML in real-time on the right.</p>
+          <p>The application supports complex markdown syntax including tables, code blocks with syntax highlighting, and inline HTML. Notes are automatically saved to the browser and can be synced to a remote database.</p>
+        </section>
+
+        <section class="details-section">
+          <h2>Key Features</h2>
+          <ul>
+            <li>Real-time Markdown to HTML compilation.</li>
+            <li>Syntax highlighting for over 30 programming languages.</li>
+            <li>Folder organization and tagging system for notes.</li>
+            <li>Auto-save functionality to prevent data loss.</li>
+            <li>Export notes as PDF or raw Markdown files.</li>
+          </ul>
+        </section>
+
+        <section class="details-section">
+          <h2>Challenges & Learnings</h2>
+          <p>Parsing Markdown in real-time without causing input lag required performance optimization. I learned how to use web workers to offload the heavy parsing tasks from the main thread, ensuring the editor remained buttery smooth even when dealing with very large documents.</p>
+        </section>
+      </div>
+
+      <aside class="sidebar-content">
+        <section class="details-section">
+          <h2>Tech Stack</h2>
+          <div class="tech-stack-tags">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Marked.js</span>
+            <span class="tech-badge">Prism.js</span>
+            <span class="tech-badge">Zustand</span>
+          </div>
+        </section>
+
+        <section class="details-section">
+          <h2>My Role</h2>
+          <ul>
+            <li>Engineered the split-pane editor and rendering pipeline.</li>
+            <li>Implemented the web worker logic for performant parsing.</li>
+            <li>Designed a clean, minimalist UI focused on typography.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>

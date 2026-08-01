@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Tracker - Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Your Name</div>
+      <ul class="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Project Header -->
+  <header class="project-header container">
+    <a href="../index.html#projects" class="back-link">← Back to Portfolio</a>
+    <h1>Fitness & Habit Tracker</h1>
+    <p class="project-subtitle">Mobile-first web app to log workouts and monitor progress over time.</p>
+    
+    <div class="project-links">
+      <a href="#" class="btn">View Live Demo</a>
+      <a href="#" class="btn btn-outline">View Source Code</a>
+    </div>
+  </header>
+
+  <!-- Project Content -->
+  <main class="container">
+    <img src="https://placehold.co/1200x500/e2e8f0/64748b?text=Fitness+Tracker+Screenshot" alt="Fitness Tracker Screenshot" class="hero-image">
+    
+    <div class="project-details">
+      <div class="main-content">
+        <section class="details-section">
+          <h2>Overview</h2>
+          <p>A Progressive Web App (PWA) designed to help users build better habits and track their physical fitness journeys. It focuses on a frictionless, mobile-first data entry experience so users can log workouts while at the gym without distraction.</p>
+          <p>The app gamifies the experience by visualizing "streaks" and providing weekly summary reports of volume lifted, miles run, and habits completed.</p>
+        </section>
+
+        <section class="details-section">
+          <h2>Key Features</h2>
+          <ul>
+            <li>Progressive Web App support (installable on iOS/Android home screens).</li>
+            <li>Offline mode support using Service Workers.</li>
+            <li>Customizable workout routines and exercise databases.</li>
+            <li>Visual habit streaks (similar to GitHub contribution graphs).</li>
+            <li>Cloud synchronization across multiple devices.</li>
+          </ul>
+        </section>
+
+        <section class="details-section">
+          <h2>Challenges & Learnings</h2>
+          <p>Implementing reliable offline functionality was the core challenge. I learned how to effectively configure Service Workers for caching app shells and intercepting API requests to queue data locally using IndexedDB when the device loses network connectivity.</p>
+        </section>
+      </div>
+
+      <aside class="sidebar-content">
+        <section class="details-section">
+          <h2>Tech Stack</h2>
+          <div class="tech-stack-tags">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Redux Toolkit</span>
+            <span class="tech-badge">Firebase Auth/Firestore</span>
+            <span class="tech-badge">Workbox (PWA)</span>
+          </div>
+        </section>
+
+        <section class="details-section">
+          <h2>My Role</h2>
+          <ul>
+            <li>Built the mobile-first, responsive interface.</li>
+            <li>Implemented offline data synchronization strategies.</li>
+            <li>Designed the gamification elements and charting components.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>
