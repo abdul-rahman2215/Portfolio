@@ -9,38 +9,15 @@ shared_css = """@font-face {
   font-display: swap;
 }
 @font-face {
-  font-family: 'Boska';
-  src: url('../assets/fonts/Boska-Regular.woff2') format('woff2'),
-       url('https://cdn.fontshare.com/wf/XWA5B7QYO35APXAF3YE3ZGLUEKXM5AUE/OM4E67LNKOMULZHKAOYI4D5ITKBZEHPB/2WOBSOJLL4JK7IHX3NLDIY3DAIT52O4K.woff2') format('woff2');
-  font-weight: 400;
+  font-family: 'Libertinus Math';
+  src: url('../assets/fonts/LibertinusMath-Regular.otf') format('opentype'),
+       url('assets/fonts/LibertinusMath-Regular.otf') format('opentype'),
+       url('https://fontlibrary.org/assets/fonts/libertinus-math/669b2b03ec50a970ff13c8f3009bd78c/c567424c45cb2196bbf6697da4bab4b9/LibertinusMathRegular.otf') format('opentype');
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Boska';
-  src: url('../assets/fonts/Boska-Italic.woff2') format('woff2'),
-       url('https://cdn.fontshare.com/wf/MBMZ7FPNE3BLIO7BA7WSXS622ESHMSPS/A24ASHB6YYDC2RKM53ROP5SQJCGM5LMQ/2YQT6WFIC4YLG23Y6A7HCRXGM5EQU4GP.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Boska';
-  src: url('../assets/fonts/Boska-Medium.woff2') format('woff2'),
-       url('https://cdn.fontshare.com/wf/CNIAHX5RKVK53N3YCRZR5R3L3S4OTBSU/DBNFGKYNM3IIQU3Q4SC6XOOFS6UMAW7D/DCZMHDUIIND3BTWZGHAVWGQPO6EB5M4I.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Boska';
-  src: url('../assets/fonts/Boska-Bold.woff2') format('woff2'),
-       url('https://cdn.fontshare.com/wf/XDSHNQOL6DH55YEQWSNM525DMPYUB5JR/GECNAC4UXYMIXSSO3FJ2FMV4QQ7E45P4/HKX3FF46MBT76S26FX57MMHX52HVGDK5.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-:root{--font-heading:'Gambarino',Georgia,serif;--font-body:'Boska',Georgia,serif;--bg:#0f0f1a;--bg2:#1a1a2e;--card:#16213e;--card2:#1e2a45;--ink:#ffffff;--ink-s:#b8b8d1;--ink-d:#6a6a8a;--ac:#7c3aed;--ac2:#a855f7;--pink:#ec4899;--grad:linear-gradient(135deg,#7c3aed 0%,#ec4899 100%);--brd:#2d2d44;--shd:0 8px 32px rgba(124,58,237,.18);--r:16px;--mono:var(--font-body);--disp:var(--font-heading);--body:var(--font-body);}
+:root{--font-heading:'Gambarino',Georgia,serif;--font-body:'Libertinus Math','LibertinusMathRegular',Georgia,serif;--bg:#0f0f1a;--bg2:#1a1a2e;--card:#16213e;--card2:#1e2a45;--ink:#ffffff;--ink-s:#b8b8d1;--ink-d:#6a6a8a;--ac:#7c3aed;--ac2:#a855f7;--pink:#ec4899;--grad:linear-gradient(135deg,#7c3aed 0%,#ec4899 100%);--brd:#2d2d44;--shd:0 8px 32px rgba(124,58,237,.18);--r:16px;--mono:var(--font-body);--disp:var(--font-heading);--body:var(--font-body);}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
