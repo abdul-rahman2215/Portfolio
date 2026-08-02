@@ -191,6 +191,7 @@
       dot = document.createElement('div');
       dot.id = 'customCursorDot';
       dot.className = 'custom-cursor-dot';
+      dot.style.cssText = 'position:fixed;top:0;left:0;width:8px;height:8px;margin-top:-4px;margin-left:-4px;border-radius:50%;background:#7c3aed;pointer-events:none;z-index:10000;will-change:transform;';
       document.body.appendChild(dot);
     }
 
@@ -198,6 +199,7 @@
       ring = document.createElement('div');
       ring.id = 'customCursorRing';
       ring.className = 'custom-cursor-ring';
+      ring.style.cssText = 'position:fixed;top:0;left:0;width:36px;height:36px;margin-top:-18px;margin-left:-18px;border-radius:50%;border:1.5px solid rgba(124,58,237,0.85);pointer-events:none;z-index:9999;will-change:transform;';
       document.body.appendChild(ring);
     }
 
@@ -268,6 +270,7 @@
       canvas = document.createElement('canvas');
       canvas.id = 'subtleParticleCanvas';
       canvas.className = 'subtle-particle-canvas';
+      canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;opacity:0.85;';
       document.body.prepend(canvas);
     }
 

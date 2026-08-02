@@ -28,13 +28,28 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-main);
   min-height: 100vh;
   line-height: 1.6;
-  overflow-x: hidden;
+}
+
+.subtle-particle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
 }
 
 /* --- Glow background --- */
@@ -75,10 +90,10 @@ nav {
 .nav-back:hover { color: var(--text-primary); border-color: var(--accent-primary); transform: translateY(-1px); }
 
 /* --- Main --- */
-main { width: min(1200px, 95%); margin: 0 auto; padding: 60px 0 100px; }
+main { width: min(1200px, 94%); max-width: 100%; margin: 0 auto; padding: 32px 12px 80px; }
 
 /* --- Page title --- */
-.page-title { text-align: center; margin-bottom: 64px; }
+.page-title { text-align: center; margin-bottom: 36px; }
 .page-eyebrow {
   font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-secondary);
   display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;

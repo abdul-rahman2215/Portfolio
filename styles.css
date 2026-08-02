@@ -22,10 +22,14 @@ html[data-theme="light"]{
 
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
 body{
   margin:0; background:var(--bg); color:var(--ink); font-family:var(--body);
   line-height:1.6; -webkit-font-smoothing:antialiased; transition:background .35s ease, color .35s ease;
-  overflow-x:hidden;
 }
 a{color:inherit;} img{max-width:100%; display:block;}
 ::selection{background:var(--violet-soft); color:var(--ink);}
