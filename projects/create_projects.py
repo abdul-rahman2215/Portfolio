@@ -94,13 +94,16 @@ template = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TITLE | Abdul Rahman</title>
+<link rel="icon" type="image/png" href="../image/logo.png">
+<link rel="shortcut icon" type="image/png" href="../image/logo.png">
+<link rel="apple-touch-icon" href="../image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>[SHARED CSS HERE]</style>
 </head>
 <body>
 <div class="glow-bg"></div>
-<nav><div class="nav-inner"><div class="brand"><div class="mark">AR</div>Abdul Rahman</div><div class="nav-links-row"><a href="../index.html" class="nav-link">Home</a><a href="../projects.html" class="nav-link">All Projects</a><a href="#" class="nav-link primary">Live Demo</a></div></div></nav>
+<nav><div class="nav-inner"><div class="brand"><img src="../image/logo.png" alt="AR Logo" style="height:32px;width:auto;border-radius:6px;"></div><div class="nav-links-row"><a href="../index.html" class="nav-link">Home</a><a href="../projects.html" class="nav-link">All Projects</a><a href="#" class="nav-link primary">Live Demo</a></div></div></nav>
 <section class="project-hero">
   <div class="hero-inner">
     <div class="crumb"><a href="../index.html">Home</a><span>/</span><a href="../projects.html">Projects</a><span>/</span><span>TITLE</span></div>
@@ -128,6 +131,8 @@ template = """<!DOCTYPE html>
   <nav class="page-nav"><a href="project-PREV_NUM.html">← Project PREV_NUM</a><div class="center"><a href="../projects.html">All Projects</a></div><a href="project-NEXT_NUM.html">Project NEXT_NUM →</a></nav>
 </div>
 <footer><div class="footer-inner"><div class="foot-brand">Abdul Rahman M</div><div class="foot-fine">© 2026 · built while learning, one commit at a time</div></div></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../cinematic-reveal.js"></script>
 </body>
 </html>"""
 

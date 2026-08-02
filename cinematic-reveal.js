@@ -8,9 +8,77 @@
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function injectCursorStylesIfNeeded() {
+    if (document.getElementById('customCursorStyles')) return;
+    const style = document.createElement('style');
+    style.id = 'customCursorStyles';
+    style.textContent = `
+      @media (hover: hover) and (pointer: fine) {
+        body, a, button, input, select, textarea, label, [role="button"], .btn, .cta-btn, .theme-btn, .hub-pill, .photo-frame, .hcard, .ccard, .c-card, tr, td, table, .case-hero, .project-card, .side-btn, .action-btn, .nav-link, .crumb, .tag {
+          cursor: none !important;
+        }
+      }
+      .custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        margin-top: -4px;
+        margin-left: -4px;
+        border-radius: 50%;
+        background: #7c3aed;
+        box-shadow: 0 0 10px rgba(124,58,237,0.5);
+        pointer-events: none;
+        z-index: 10000;
+        will-change: transform;
+        transition: opacity 0.3s ease, transform 0.15s ease, background-color 0.2s ease;
+      }
+      .custom-cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        margin-top: -18px;
+        margin-left: -18px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(124,58,237,0.85);
+        box-shadow: 0 0 14px rgba(124,58,237,0.3);
+        background: transparent;
+        pointer-events: none;
+        z-index: 9999;
+        will-change: transform;
+        transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, margin 0.25s ease, transform 0.15s ease;
+      }
+      .custom-cursor-ring.cursor-hover {
+        width: 52px;
+        height: 52px;
+        margin-top: -26px;
+        margin-left: -26px;
+        border-color: #ec4899;
+        background: rgba(124,58,237,0.15);
+        box-shadow: 0 0 22px rgba(236,72,153,0.4);
+      }
+      .custom-cursor-ring.cursor-active {
+        transform: scale(0.85);
+      }
+      .custom-cursor-hidden {
+        opacity: 0 !important;
+      }
+      @media (hover: none), (pointer: coarse) {
+        .custom-cursor-dot, .custom-cursor-ring {
+          display: none !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function initCinematicEntrance() {
     const overlay = document.getElementById('cinematicEntranceOverlay');
     const heroSection = document.querySelector('.hero');
+    if (!overlay || !heroSection) return;
     const heroBadge = document.querySelector('.eyebrow');
     const heroTitle = document.querySelector('h1.name');
     const heroPitch = document.querySelector('.pitch');
@@ -183,6 +251,7 @@
    */
   function initFloatingCursor() {
     if (window.matchMedia('(hover: none) or (pointer: coarse)').matches) return;
+    injectCursorStylesIfNeeded();
 
     let dot = document.getElementById('customCursorDot');
     let ring = document.getElementById('customCursorRing');
@@ -207,18 +276,18 @@
     let mouseY = window.innerHeight / 2;
     let ringX = mouseX;
     let ringY = mouseY;
+    let isMoving = false;
 
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      
-      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      isMoving = true;
 
       if (dot.classList.contains('custom-cursor-hidden')) {
         dot.classList.remove('custom-cursor-hidden');
         ring.classList.remove('custom-cursor-hidden');
       }
-    });
+    }, { passive: true });
 
     document.addEventListener('mouseleave', () => {
       dot.classList.add('custom-cursor-hidden');
@@ -239,23 +308,26 @@
     });
 
     document.addEventListener('mouseover', (e) => {
-      const target = e.target.closest('a, button, input, select, textarea, .btn, .card, .stat-card, .t-item, .hub-pill, .photo-frame, [role="button"]');
+      const target = e.target.closest('a, button, input, select, textarea, .btn, .card, .stat-card, .t-item, .hub-pill, .photo-frame, table, tr, [role="button"]');
       if (target) {
         ring.classList.add('cursor-hover');
       }
-    });
+    }, { passive: true });
 
     document.addEventListener('mouseout', (e) => {
-      const target = e.target.closest('a, button, input, select, textarea, .btn, .card, .stat-card, .t-item, .hub-pill, .photo-frame, [role="button"]');
+      const target = e.target.closest('a, button, input, select, textarea, .btn, .card, .stat-card, .t-item, .hub-pill, .photo-frame, table, tr, [role="button"]');
       if (target) {
         ring.classList.remove('cursor-hover');
       }
-    });
+    }, { passive: true });
 
     function loop() {
-      ringX += (mouseX - ringX) * 0.16;
-      ringY += (mouseY - ringY) * 0.16;
-      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      if (isMoving) {
+        dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        ringX += (mouseX - ringX) * 0.32;
+        ringY += (mouseY - ringY) * 0.32;
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      }
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
@@ -281,7 +353,7 @@
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    });
+    }, { passive: true });
 
     let mouseX = width / 2;
     let mouseY = height / 2;
@@ -289,17 +361,16 @@
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-    });
+    }, { passive: true });
 
     // 1. Swirling Cosmic Nebulae (Softened background light pools)
     const nebulae = [
-      { x: width * 0.25, y: height * 0.3, radius: 520, angle: 0, speed: 0.003 },
-      { x: width * 0.78, y: height * 0.6, radius: 560, angle: Math.PI / 2, speed: 0.002 },
-      { x: width * 0.50, y: height * 0.85, radius: 440, angle: Math.PI, speed: 0.004 }
+      { x: width * 0.25, y: height * 0.3, radius: 420, angle: 0, speed: 0.002 },
+      { x: width * 0.78, y: height * 0.6, radius: 460, angle: Math.PI / 2, speed: 0.0015 }
     ];
 
-    // 2. High Density Stardust Particles (Rich cosmic star field)
-    const particleCount = Math.min(420, Math.floor((width * height) / 4200));
+    // 2. High Density Stardust Particles (Lightweight performance optimized)
+    const particleCount = Math.min(100, Math.floor((width * height) / 10000));
     const stardust = [];
 
     const colors = [

@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdul Rahman — Portfolio</title>
-<meta name="description" content="Abdul Rahman M — AI & Data Science student at SNS College of Technology, Coimbatore.">
+<link rel="icon" type="image/png" href="image/logo.png">
+<link rel="shortcut icon" type="image/png" href="image/logo.png">
+<link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preload" href="assets/fonts/Gambarino-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/libertinus-math" type="text/css"/>
 <link rel="stylesheet" href="styles.css">
@@ -18,15 +20,15 @@
 
 <header>
   <nav>
-    <div class="brand"><span class="mark">AR</span> Abdul Rahman</div>
+    <a href="#top" class="brand" aria-label="Home">
+      <img src="image/logo.png" alt="AR Logo" class="brand-logo">
+    </a>
     <div class="navlinks">
-      <a href="#journey">Journey</a>
-      <a href="projects.html">Projects</a>
-      <a href="internship.html">Internships</a>
-      <a href="hackathon.html">Hackathons</a>
-      <a href="certificate.html">Certifications</a>
-      <a href="#toolkit">Toolkit</a>
-      <a href="#connect">Connect</a>
+      <a href="#top">Home</a>
+      <a href="projects.html">Work</a>
+      <a href="#journey">About</a>
+      <a href="#toolkit">Skills</a>
+      <a href="#connect">Contact</a>
     </div>
     <div class="nav-right">
       <button class="theme-btn" id="themeToggle" aria-label="Toggle light and dark theme">
@@ -44,7 +46,7 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow"><span class="pulse"></span> OPEN TO INTERNSHIPS · COIMBATORE, INDIA</div>
-        <h1 class="name">Abdul Rahman<br><span class="accent">learning to build with data.</span></h1>
+        <h1 class="name">Abdul Rahman<br><span class="accent">learning to  build with data.</span></h1>
         <p class="pitch">Second-year AI &amp; Data Science student at SNS College of Technology. Currently turning coursework, hackathons and certifications into a real foundation — one problem at a time.</p>
         <div class="hero-ctas">
           <a class="btn primary" href="#journey">See my journey ↓</a>
@@ -455,24 +457,44 @@
   }, {threshold:0.2});
   bars.forEach(b => io2.observe(b));
 
-  // Contact Form Handling
-  const contactForm = document.getElementById('contactForm');
-  const statusEl = document.getElementById('status');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      statusEl.textContent = 'Sending message...';
-      statusEl.style.color = 'var(--ink-soft)';
-      statusEl.style.display = 'block';
-      
-      // Simulate form submission
-      setTimeout(() => {
-        statusEl.textContent = 'Message sent successfully! Thank you.';
-        statusEl.style.color = '#39D98A';
-        contactForm.reset();
-      }, 1200);
-    });
+  // ScrollSpy / Active navigation link observer
+  const linkHome = document.querySelector('.navlinks a[href="#top"]');
+  const linkAbout = document.querySelector('.navlinks a[href="#journey"]');
+  const linkSkills = document.querySelector('.navlinks a[href="#toolkit"]');
+  const linkContact = document.querySelector('.navlinks a[href="#connect"]');
+
+  const sectionMap = [
+    { section: document.getElementById('top'), link: linkHome },
+    { section: document.getElementById('journey'), link: linkAbout },
+    { section: document.getElementById('toolkit'), link: linkSkills },
+    { section: document.getElementById('connect'), link: linkContact },
+    { section: document.getElementById('contact'), link: linkContact }
+  ].filter(item => item.section && item.link);
+
+  function highlightActiveSection() {
+    const scrollPos = window.scrollY + 220;
+    let activeItem = sectionMap[0];
+
+    for (let i = 0; i < sectionMap.length; i++) {
+      const sec = sectionMap[i].section;
+      if (sec.offsetTop <= scrollPos) {
+        activeItem = sectionMap[i];
+      }
+    }
+
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
+      activeItem = sectionMap.find(m => m.link === linkContact) || activeItem;
+    }
+
+    document.querySelectorAll('.navlinks a').forEach(a => a.classList.remove('active'));
+    if (activeItem && activeItem.link) {
+      activeItem.link.classList.add('active');
+    }
   }
+
+  window.addEventListener('scroll', highlightActiveSection, { passive: true });
+  window.addEventListener('resize', highlightActiveSection, { passive: true });
+  highlightActiveSection();
 </script>
 
 </body>
