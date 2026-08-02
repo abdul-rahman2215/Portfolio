@@ -45,7 +45,7 @@
       <div>
         <div class="eyebrow"><span class="pulse"></span> OPEN TO INTERNSHIPS · COIMBATORE, INDIA</div>
         <h1 class="name">Abdul Rahman<br><span class="accent">learning to build with data.</span></h1>
-        <p class="pitch">First-year AI &amp; Data Science student at SNS College of Technology. Currently turning coursework, hackathons and certifications into a real foundation — one problem at a time.</p>
+        <p class="pitch">Second-year AI &amp; Data Science student at SNS College of Technology. Currently turning coursework, hackathons and certifications into a real foundation — one problem at a time.</p>
         <div class="hero-ctas">
           <a class="btn primary" href="#journey">See my journey ↓</a>
           <a class="btn ghost" href="image/resume.jpeg" download="Abdul_Rahman_Resume.jpeg">⬇ DOWNLOAD RESUME</a>
@@ -77,11 +77,11 @@
         <div class="stat-cap">CGPA — Semester 1</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num"><span class="count" data-target="3">0</span></div>
+        <div class="stat-num"><span class="count" id="stat-hackathons" data-target="3">0</span></div>
         <div class="stat-cap">Hackathons entered</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num"><span class="count" data-target="3">0</span></div>
+        <div class="stat-num"><span class="count" id="stat-certificates" data-target="3">0</span></div>
         <div class="stat-cap">Certifications earned</div>
       </div>
       <div class="stat-card">
@@ -161,29 +161,75 @@
   <!-- CERTIFICATIONS -->
   
 
-  <!-- TOOLKIT -->
+  <!-- SKILLS & STACK -->
   <section id="toolkit">
-    <div class="sec-eyebrow">Capabilities</div>
-    <h2 class="sec-title">Toolkit &amp; <span class="it">languages</span></h2>
-    <div class="tool-grid">
-      <div class="tool-block">
-        <h4>Tools I use</h4>
-        <div class="chip-row">
-          <div class="chip">Python <span class="lvl">building</span></div>
-          <div class="chip">Text Processor <span class="lvl">comfortable</span></div>
-          <div class="chip">Spreadsheet <span class="lvl">comfortable</span></div>
-          <div class="chip">Slide Presentation <span class="lvl">comfortable</span></div>
-        </div>
-      </div>
-      <div class="lang-block">
-        <h4>Languages</h4>
-        <div class="lang-bar">
-          <div class="lbl"><span>Tamil</span><span>Native</span></div>
-          <div class="lang-track"><div class="lang-fill" data-width="100"></div></div>
-        </div>
-        <div class="lang-bar">
-          <div class="lbl"><span>English</span><span>Intermediate</span></div>
-          <div class="lang-track"><div class="lang-fill" data-width="60"></div></div>
+    <div class="space-gradient">
+      <div class="stars"></div>
+      <div class="space-gradient-content">
+        <div class="sec-eyebrow">Capabilities</div>
+        <h2 class="sec-title">Skills &amp; <span class="it">Stack</span></h2>
+        <p class="skills-subtitle">Proficiency built through real projects, not just tutorials.</p>
+
+        <div class="skills-container">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">HTML / CSS</span>
+              <span class="skill-val">92%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="92"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-val">82%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="82"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Python</span>
+              <span class="skill-val">76%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="76"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Java</span>
+              <span class="skill-val">72%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="72"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Firebase</span>
+              <span class="skill-val">75%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="75"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">UI/UX Design</span>
+              <span class="skill-val">65%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="65"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -319,8 +365,47 @@
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
 <script src="cinematic-reveal.js"></script>
 <script>
+  // Dynamic Hackathon & Certificate counters from Supabase
+  async function updateDynamicCounts() {
+    const hackEl = document.getElementById('stat-hackathons');
+    const certEl = document.getElementById('stat-certificates');
+
+    if (typeof supabaseClient !== 'undefined') {
+      try {
+        const [hackRes, certRes] = await Promise.all([
+          supabaseClient.from("hackathon").select("*", { count: "exact", head: true }),
+          supabaseClient.from("CERTIFICATE").select("*", { count: "exact", head: true })
+        ]);
+
+        if (!hackRes.error && hackRes.count !== null && hackEl) {
+          hackEl.setAttribute('data-target', hackRes.count);
+        }
+        if (!certRes.error && certRes.count !== null && certEl) {
+          certEl.setAttribute('data-target', certRes.count);
+        }
+      } catch (err) {
+        console.warn("Supabase count fetch error:", err);
+      }
+    }
+  }
+
+  // Auto update counts from Supabase on load
+  updateDynamicCounts();
+
+  // Realtime listener when new rows are added in Supabase
+  if (typeof supabaseClient !== 'undefined') {
+    try {
+      supabaseClient.channel('realtime-stats')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'hackathon' }, updateDynamicCounts)
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'CERTIFICATE' }, updateDynamicCounts)
+        .subscribe();
+    } catch(e) {}
+  }
+
   // Theme toggle (session-only state, no storage APIs)
   const root = document.documentElement;
   const themeBtn = document.getElementById('themeToggle');
@@ -358,8 +443,8 @@
   }, {threshold:0.4});
   counters.forEach(c => io.observe(c));
 
-  // Language bar fill on scroll
-  const bars = document.querySelectorAll('.lang-fill');
+  // Skill bar fill on scroll
+  const bars = document.querySelectorAll('.lang-fill, .skill-fill');
   const io2 = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
@@ -367,7 +452,7 @@
         io2.unobserve(entry.target);
       }
     });
-  }, {threshold:0.4});
+  }, {threshold:0.2});
   bars.forEach(b => io2.observe(b));
 
   // Contact Form Handling
@@ -388,7 +473,6 @@
       }, 1200);
     });
   }
-  
 </script>
 
 </body>

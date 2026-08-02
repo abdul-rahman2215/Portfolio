@@ -13,7 +13,55 @@
 
 <style>
 
+@font-face {
+  font-family: 'Gambarino';
+  src: url('assets/fonts/Gambarino-Regular.woff2') format('woff2'),
+       url('https://cdn.fontshare.com/wf/ZINX7PW4XMYISLZAZKYY4QHYYHYNPKAV/Z54IGKTR4PBLA5KTYL3IDQZHFQPJJVNZ/6KBHT5NXCZVM6GHTPKGIR6DXZLQAYIFK.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Boska';
+  src: url('assets/fonts/Boska-Regular.woff2') format('woff2'),
+       url('https://cdn.fontshare.com/wf/XWA5B7QYO35APXAF3YE3ZGLUEKXM5AUE/OM4E67LNKOMULZHKAOYI4D5ITKBZEHPB/2WOBSOJLL4JK7IHX3NLDIY3DAIT52O4K.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Boska';
+  src: url('assets/fonts/Boska-Italic.woff2') format('woff2'),
+       url('https://cdn.fontshare.com/wf/MBMZ7FPNE3BLIO7BA7WSXS622ESHMSPS/A24ASHB6YYDC2RKM53ROP5SQJCGM5LMQ/2YQT6WFIC4YLG23Y6A7HCRXGM5EQU4GP.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Boska';
+  src: url('assets/fonts/Boska-Medium.woff2') format('woff2'),
+       url('https://cdn.fontshare.com/wf/CNIAHX5RKVK53N3YCRZR5R3L3S4OTBSU/DBNFGKYNM3IIQU3Q4SC6XOOFS6UMAW7D/DCZMHDUIIND3BTWZGHAVWGQPO6EB5M4I.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Boska';
+  src: url('assets/fonts/Boska-Bold.woff2') format('woff2'),
+       url('https://cdn.fontshare.com/wf/XDSHNQOL6DH55YEQWSNM525DMPYUB5JR/GECNAC4UXYMIXSSO3FJ2FMV4QQ7E45P4/HKX3FF46MBT76S26FX57MMHX52HVGDK5.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+    --font-heading: 'Gambarino', Georgia, serif;
+    --font-body: 'Boska', Georgia, serif;
+
     --bg-primary: #0f0f1a;
     --bg-secondary: #1a1a2e;
     --bg-card: #16213e;
@@ -45,7 +93,7 @@ html{
 }
 
 body{
-    font-family:'DM Sans',sans-serif;
+    font-family:var(--font-body);
     background:
     radial-gradient(circle at top left, rgba(124,58,237,.15), transparent 35%),
     radial-gradient(circle at bottom right, rgba(236,72,153,.15), transparent 35%),
@@ -122,9 +170,9 @@ main{
 }
 
 .page-title h1{
-    font-family:'Cormorant Garamond',serif;
+    font-family:var(--font-heading);
     font-size:clamp(2.6rem, 7vw, 4.2rem);
-    font-style:italic;
+    font-style:normal;
     color:var(--accent-secondary);
 
     text-shadow:
@@ -197,7 +245,7 @@ main{
 }
 
 .hero-text h1{
-    font-family:'Cormorant Garamond',serif;
+    font-family:var(--font-heading);
     color:var(--accent-secondary);
     font-size:2.2rem;
     margin-bottom:6px;
