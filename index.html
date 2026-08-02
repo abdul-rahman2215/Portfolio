@@ -8,15 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body class="intro-active">
 
-<div id="introScreen" class="intro-screen" aria-hidden="true">
-  <div class="intro-content">
-    <h1 class="intro-name">ABDUL RAHMAN</h1>
-    <span class="intro-line"></span>
-  </div>
-</div>
+<div id="cinematicEntranceOverlay" class="cinematic-entrance-overlay" aria-hidden="true"></div>
 
 <div class="glow-bg"></div>
 
@@ -202,13 +198,17 @@
         <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
         <div class="k">Phone</div><div class="v">91503 54626</div>
       </a>
-      <a class="c-card" href="mailto:itzmeabdul1114@gmail.com">
+      <a class="c-card" href="mailto:itzmeabdul1114@gmail.com" title="itzmeabdul1114@gmail.com">
         <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="M22 6l-10 7L2 6"></path></svg></div>
         <div class="k">Email</div><div class="v">itzmeabdul1114@gmail.com</div>
       </a>
       <a class="c-card" href="https://www.linkedin.com/in/abdul-rahmanmuthafa" target="_blank" rel="noopener">
         <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle><path d="M10 9h3.6v2.2h.05c.5-.95 1.75-1.95 3.6-1.95 3.85 0 4.75 2.5 4.75 5.75V21h-4v-5.4c0-1.3-.02-2.95-1.8-2.95-1.8 0-2.1 1.4-2.1 2.85V21h-4z"></path></svg></div>
         <div class="k">LinkedIn</div><div class="v">/in/abdul-rahmanmuthafa</div>
+      </a>
+      <a class="c-card" href="https://github.com/abdul-rahman2215" target="_blank" rel="noopener">
+        <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></div>
+        <div class="k">GitHub</div><div class="v">/abdul-rahman2215</div>
       </a>
       <div class="c-card" style="cursor:default;">
         <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
@@ -319,23 +319,8 @@
 </footer>
 
 
+<script src="cinematic-reveal.js"></script>
 <script>
-  // Intro name-reveal screen
-  (function(){
-    const intro = document.getElementById('introScreen');
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const dismiss = () => {
-      intro.classList.add('intro-hide');
-      document.body.classList.remove('intro-active');
-      setTimeout(() => intro.remove(), prefersReduced ? 0 : 700);
-    };
-    if (prefersReduced){
-      dismiss();
-    } else {
-      setTimeout(dismiss, 2400);
-    }
-  })();
-
   // Theme toggle (session-only state, no storage APIs)
   const root = document.documentElement;
   const themeBtn = document.getElementById('themeToggle');
